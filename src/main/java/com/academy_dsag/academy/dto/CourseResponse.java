@@ -1,42 +1,15 @@
-package com.academy_dsag.academy.entity;
+package com.academy_dsag.academy.dto;
 
-import jakarta.persistence.*;
 import java.time.Instant;
 
-@Entity
-@Table(name = "course")
-public class course {
+public class CourseResponse {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false, length = 120)
     private String name;
-
-    @Column(length = 500)
     private String description;
-
-    @Column(nullable = false)
     private Double price;
-
-    @Column(nullable = false, updatable = false)
     private Instant createdAt;
-
-    @Column(nullable = false)
     private Instant updatedAt;
-
-    @PrePersist
-    void onCreate() {
-        Instant now = Instant.now();
-        this.createdAt = now;
-        this.updatedAt = now;
-    }
-
-    @PreUpdate
-    void onUpdate() {
-        this.updatedAt = Instant.now();
-    }
 
     // Getters & Setters
 
@@ -88,4 +61,6 @@ public class course {
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+
 }
